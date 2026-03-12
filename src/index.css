@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 30% 98%;
+    --foreground: 215 35% 12%;
+
+    --card: 210 40% 97%;
+    --card-foreground: 215 35% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 35% 12%;
+
+    --primary: 210 80% 45%;
+    --primary-foreground: 210 100% 98%;
+
+    --secondary: 200 25% 92%;
+    --secondary-foreground: 215 35% 18%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 15% 45%;
+
+    --accent: 195 85% 42%;
+    --accent-foreground: 210 100% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 25% 88%;
+    --input: 210 25% 88%;
+    --ring: 210 80% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --rain-dark: 215 45% 8%;
+    --rain-deep: 215 60% 15%;
+    --rain-medium: 210 55% 30%;
+    --rain-light: 200 70% 55%;
+    --rain-pale: 200 60% 85%;
+    --rain-glow: 195 100% 60%;
+    --storm-amber: 38 92% 50%;
+    --storm-red: 0 72% 51%;
+    --storm-green: 142 70% 45%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(215 45% 8%) 0%, hsl(210 55% 20%) 50%, hsl(200 70% 35%) 100%);
+    --gradient-rain: linear-gradient(180deg, hsl(210 80% 45% / 0.15) 0%, hsl(195 85% 42% / 0.05) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(210 40% 97%) 0%, hsl(200 30% 94%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(210 80% 45%) 0%, hsl(195 85% 42%) 100%);
+
+    --shadow-card: 0 4px 24px -4px hsl(210 80% 45% / 0.08);
+    --shadow-elevated: 0 12px 40px -8px hsl(210 80% 45% / 0.15);
+    --shadow-glow: 0 0 30px hsl(195 100% 60% / 0.2);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+  .glass-card {
+    @apply backdrop-blur-md border border-border rounded-xl;
+    background: hsl(var(--card) / 0.8);
+    box-shadow: var(--shadow-card);
+  }
+  .rain-bg {
+    background: var(--gradient-rain);
+  }
+}
+
+/* Rain animation */
+@keyframes rainDrop {
+  0% { transform: translateY(-100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(100vh) translateX(-20px); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
